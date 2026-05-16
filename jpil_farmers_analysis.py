@@ -68,10 +68,10 @@ plt.savefig("crop_type_farm_size.png")
 #plt.show()
 
 #what is the typical yield change for cassava farmers compared to yam farmers?
-typical_yield_change=df.groupby("Crop Type")["Yield Change"].mean()
-print(typical_yield_change)
+#typical_yield_change=df.groupby("Crop Type")["Yield Change"].mean()
+#print(typical_yield_change)
 
-typical_yield_change.plot(kind="bar", color=["orange", "green"])
+#typical_yield_change.plot(kind="bar", color=["orange", "green"])
 plt.title("Typical yield change")
 plt.xlabel("Crop type", fontsize=14)
 plt.ylabel("Yield change")
@@ -82,10 +82,10 @@ plt.savefig("Typical_yield_change.png")
 
 
 #what is the typical amount of fertilizer used by farmers who used it correctly and incorrectly?
-amount_of_fertilizer_used=df.groupby("Fertilizer Type")["Fertilizer Used kg"].count()
-print(amount_of_fertilizer_used)
+#amount_of_fertilizer_used=df.groupby("Fertilizer Type")["Fertilizer Used kg"].count()
+#print(amount_of_fertilizer_used)
 
-amount_of_fertilizer_used.plot(kind="bar", color=["blue","green"])
+#amount_of_fertilizer_used.plot(kind="bar", color=["blue","green"])
 plt.title("Amount of fertilizer used")
 plt.xlabel("Fertilizer type")
 plt.ylabel("Fertilizer used")
@@ -95,15 +95,115 @@ plt.savefig("Amount_of_fertilizer_used.png")
 #plt.show()
 
 #what is the median farm size for farmers who had pest problems versus those who did not?
-median_farm_size=df.groupby("Pest Incidence")["Farm Size ha"].median()
-print(median_farm_size)
+#median_farm_size=df.groupby("Pest Incidence")["Farm Size ha"].median()
+#print(median_farm_size)
 
-median_farm_size.plot(kind="bar", color=["orange","blue"])
+#median_farm_size.plot(kind="bar", color=["orange","blue"])
 plt.title("Median_farm_size", fontsize=12)
 plt.xlabel("Pest incidence", fontsize=14)
 plt.ylabel("Farm size ha")
 plt.xticks(rotation=45)
 plt.savefig("Median_farm_size.png")
 plt.tight_layout()
-plt.show()
+#plt.show()
 
+
+#what is the most common crop grown by farmers in this dataset?
+most_common_crop=df["Crop Type"].value_counts()
+#print(most_common_crop)
+
+most_common_crop.plot(kind="bar", color=["coral","blue"])
+plt.title("Most Common Crop")
+plt.xlabel("Crop Type")
+plt.ylabel("Number of farmers")
+plt.xticks(rotation=45)
+plt.savefig("Most_common_crop.png")
+plt.tight_layout()
+#plt.show()
+
+
+#which village appears most frequently in the dataset?
+#most_frequent_appearing_village=df["Village"].value_counts()
+#print(most_frequent_appearing_village)
+
+#most_frequent_appearing_village.plot(kind="bar", color=["coral","brown","blue"])
+#plt.title("Most Frequent Appearing Village")
+#plt.xlabel("Village")
+#plt.ylabel("Number of farmers")
+plt.xticks(rotation=45)
+#plt.savefig("Most_frequent_appearing_village.png")
+plt.tight_layout()
+#plt.show()
+
+
+#is pest incidence more common than not among these farmers?
+#pest_incidence=df["Pest Incidence"].value_counts()
+#print(pest_incidence)
+
+#i will be plotting a pie chart
+#plt.figure(figsize=(7,7))
+#pest_incidence.plot(
+    #kind="pie",
+    #color=["coral", "seagreen"],
+    #autopct="%1.1f%%",
+    #startangle=90,
+    
+#)
+#plt.title("Pest Incidence")
+#plt.ylabel("")
+#plt.tight_layout()
+#plt.savefig("Pest_incidence_piechart.png")
+#plt.show()
+
+
+#what is the most common type of land ownership among the farmers? what type of chart are we using to draw it?
+#most_common_type_of_land_ownership=df["Land Tenure"].value_counts()
+#print(most_common_type_of_land_ownership)
+
+#most_common_type_of_land_ownership.plot(kind="bar", color=["coral","brown","blue"])
+#plt.title("Most Common Type Of Land Ownership")
+#plt.xlabel("Land Tenure")
+#plt.ylabel("Number of farmers")
+#plt.xticks(rotation=45)
+#plt.savefig("Most_common_type_of_land_ownership.png")
+plt.tight_layout()
+#plt.show()
+
+
+#Draw a bar chart showing the average yield after training for each village
+#avg_yield_after_training = df.groupby("Village")["Yield After kg per hec"].mean()
+#print(avg_yield_after_training)
+
+#avg_yield_after_training.plot(kind="bar", color=["brown","blue", "indigo"])
+#plt.title("average yield after training")
+#plt.xlabel("Village", fontsize=14)
+#plt.ylabel("Yield After kg per hec")
+plt.xticks(rotation=45)
+plt.savefig("Average_yield_after_per_village.png")
+#plt.show()
+
+
+#draw a bar chart showing the median fertilizer used by correct vs incorrect fertilizer users
+#median_fertilizer_used=df.groupby("Fertilizer Type")["Fertilizer Used kg"].median()
+#print(median_fertilizer_used)
+
+#median_fertilizer_used.plot(kind="bar", color=["brown","blue", "indigo"])
+#plt.title("Median fertilizer used")
+#plt.xlabel("Fertilizer Type", fontsize=14)
+#plt.ylabel("Fertilizer Used kg", fontsize=14)
+plt.xticks(rotation=45)
+plt.savefig("Median_Fertilizer_Used.png")
+#plt.show()
+
+
+#draw a bar chart showing how many farmers grow each crop type
+number_of_farmers_for_each_crop_type=df["Crop Type"].value_counts()
+print(number_of_farmers_for_each_crop_type)
+
+number_of_farmers_for_each_crop_type.plot(kind="bar", color=["brown","blue", "indigo"])
+plt.title("Number of farmers for each crop type", fontsize=14, fontweight="bold")
+plt.xlabel("Crop Type", fontsize=14)
+plt.ylabel("Farmer ID", fontsize=14)
+plt.xticks(rotation=45)
+plt.savefig("Number_of_farmers_for_each_crop_type.png")
+plt.show()
